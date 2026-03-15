@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: heima-ai
+  data:
+    redis:
+      url: redis://localhost:6379
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  ai:
+    ollama:
+      base-url: http://localhost:11435
+      chat:
+        model: deepseek-r1:7b
+      embedding:
+        options:
+          model: dengcao/Qwen3-Embedding-8B:Q4_K_M
+    vectorstore:
+      redis:
+        index: spring-ai-index
+        prefix:doc:
+        create-index: true
+
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug
+    com.newAI.ai: debug
